@@ -20,6 +20,30 @@ Use a simple `<link>` tag to include your favicon. This plugin will add other re
 
 ### Options
 
-See favicon `configuration`
+See the `Options` interface in [`src/index.ts`](./src/index.ts)
+
+For favicon configurations see favicon repo:
 
 https://github.com/evilebottnawi/favicons#nodejs
+
+### Example
+
+```js
+const html = `
+<!doctype html>
+<html>
+    <head>
+        <link rel="icon" href="my-icon.png" />
+    </head>
+    <body>
+    </body>
+</html>`;
+
+posthtml()
+    .use(plugin({ outDir: "./dist", configuration: { path: "/icons" } }))
+    .process(html)
+    .then(res => {
+        // files are written to dist folder
+        // res.html has new tags
+    });
+```
