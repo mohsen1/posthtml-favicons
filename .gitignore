@@ -89,3 +89,4 @@ typings/
 *.js
 *.d.ts
 dist/
+!src/declarations.d.ts
