@@ -1,6 +1,6 @@
 const plugin = require("./dist/src");
-const posthtml = require("posthtml");
-const fs = require("fs");
+import posthtml from "posthtml";
+import fs from "fs";
 
 const iconPath = "./__tests__/icon.png";
 const html = `
@@ -17,7 +17,7 @@ console.time("processing time");
 posthtml()
     .use(plugin({ outDir: "./dist", configuration: { path: "/icons" } }))
     .process(html)
-    .then(res => {
+    .then((res: any) => {
         console.log(res.html);
         console.timeEnd("processing time");
         console.assert(fs.existsSync("./dist/android-chrome-144x144.png"));
@@ -69,6 +69,6 @@ posthtml()
         console.assert(fs.existsSync("./dist/yandex-browser-50x50.png"));
         console.assert(fs.existsSync("./dist/yandex-browser-manifest.json"));
     })
-    .catch(err => {
-        throw errr;
+    .catch((err: Error) => {
+        throw err;
     });
