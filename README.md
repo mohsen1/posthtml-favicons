@@ -11,7 +11,7 @@ Use a simple `<link>` tag to include your favicon. This plugin will add other re
 ```html
 <html>
     <head>
-        <link rel="favicon" href="path/to/icon.png" />
+        <link rel="icon" href="path/to/icon.png" />
     </head>
     <body>
     </body>
