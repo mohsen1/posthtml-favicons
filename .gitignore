@@ -90,3 +90,4 @@ typings/
 *.d.ts
 dist/
 !src/declarations.d.ts
+!integration.js
