@@ -4,3 +4,4 @@ node_modules/
 src/
 __tests__
 dist/__tests__
+dist/integration.js
