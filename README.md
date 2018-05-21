@@ -29,6 +29,7 @@ https://github.com/evilebottnawi/favicons#nodejs
 ### Example
 
 ```js
+cons favIconPlugin = require('posthtml-favicons');
 const html = `
 <!doctype html>
 <html>
@@ -40,7 +41,7 @@ const html = `
 </html>`;
 
 posthtml()
-    .use(plugin({ outDir: "./dist", configuration: { path: "/icons" } }))
+    .use(favIconPlugin({ outDir: "./dist", configuration: { path: "/icons" } }))
     .process(html)
     .then(res => {
         // files are written to dist folder
