@@ -29,7 +29,7 @@ https://github.com/evilebottnawi/favicons#nodejs
 ### Example
 
 ```js
-cons favIconPlugin = require('posthtml-favicons');
+const favIconPlugin = require('posthtml-favicons');
 const html = `
 <!doctype html>
 <html>
