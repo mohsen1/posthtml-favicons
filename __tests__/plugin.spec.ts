@@ -4,6 +4,12 @@ import plugin from "../src";
 import { Configuration, FavIconResponse } from "favicons";
 
 jest.mock("fs");
+jest.mock("util", () => ({
+    promisify(fn: Function) {
+        return fn;
+    }
+}));
+
 jest.mock("favicons", () => (input: string, config: any, cb: Function) => {
     setTimeout(() => {
         const res: FavIconResponse = {

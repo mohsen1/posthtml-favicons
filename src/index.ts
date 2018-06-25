@@ -1,8 +1,10 @@
-import parser, { Tree } from "posthtml-parser";
+import { Tree } from "posthtml-parser";
 import fs from "fs";
 import path from "path";
 import utils from "util";
-import favicons, { Configuration, FavIconResponse } from "favicons";
+import favIcons, { Configuration, FavIconResponse } from "favicons";
+
+const writeFile = utils.promisify(fs.writeFile);
 
 export interface Options {
     /** Root of resolving path to the image */
@@ -47,13 +49,21 @@ function plugin(options: Options = {}) {
                 return resolve();
             }
 
-            favicons(filePath, configuration, (err, res) => {
+            favIcons(filePath, configuration, async (err, res) => {
                 if (err) {
                     reject(err);
                 } else {
+                    const writeFilePromises = [];
+
                     // Write images to disk
                     for (const { name, contents } of [...res.images, ...res.files]) {
-                        fs.writeFileSync(path.resolve(outDir, name), contents);
+                        writeFilePromises.push(writeFile(path.resolve(outDir, name), contents));
+                    }
+
+                    try {
+                        await Promise.all(writeFilePromises);
+                    } catch (e) {
+                        return reject(e);
                     }
 
                     // Add tags to head tag
