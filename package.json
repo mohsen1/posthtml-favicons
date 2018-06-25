@@ -1,8 +1,8 @@
 {
     "name": "posthtml-favicons",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "PostHTML Favicon generator ",
-    "main": "dist/index.js",
+    "main": "dist/src/index.js",
     "repository": "git@github.com:mohsen1/posthtml-favicons.git",
     "author": "Mohsen Azimi <me@azimi.me>",
     "license": "MIT",
@@ -33,7 +33,16 @@
             "^.+\\.tsx?$": "ts-jest"
         },
         "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
-        "moduleFileExtensions": ["ts", "tsx", "js", "jsx", "json", "node"],
-        "modulePathIgnorePatterns": ["dist/__tests__"]
+        "moduleFileExtensions": [
+            "ts",
+            "tsx",
+            "js",
+            "jsx",
+            "json",
+            "node"
+        ],
+        "modulePathIgnorePatterns": [
+            "dist/__tests__"
+        ]
     }
 }

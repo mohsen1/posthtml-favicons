@@ -29,7 +29,7 @@ function plugin(options: Options = {}) {
 
     return function postHtmlFavicons(tree: Tree) {
         return new Promise((resolve, reject) => {
-            tree.match({ tag: "link", attrs: { rel: "icon" } }, node => {
+            let ret = tree.match({ tag: "link", attrs: { rel: /icon/ } }, node => {
                 if (node.attrs.href === undefined) {
                     return node;
                 }
@@ -60,6 +60,7 @@ function plugin(options: Options = {}) {
                 // Remove original link tag
                 return false;
             });
+            console.log(ret);
         });
     };
 }

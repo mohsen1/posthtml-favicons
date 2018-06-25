@@ -91,7 +91,7 @@ declare module "posthtml-parser" {
 
     interface MatchOptions {
         tag?: string;
-        attrs?: { [atts: string]: string };
+        attrs?: { [atts: string]: string | RegExp };
     }
 
     interface HTMLNode {
