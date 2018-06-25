@@ -48,3 +48,8 @@ posthtml()
         // res.html has new tags
     });
 ```
+
+### Using with Parcel Bundler
+There is an example repo for demonstrating usage with Parcel Bundler
+
+[posthtml-favicon-parcel-example](https://github.com/mohsen1/posthtml-favicon-parcel-example)
