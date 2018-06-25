@@ -12,3 +12,15 @@ exports[`basics appends basic tags 1`] = `
             </html>
         "
 `;
+
+exports[`basics does nothing if a link tag does not exist 1`] = `
+"
+            <!doctype html>
+            <html>
+                <head>
+                </head>
+                <body>
+                </body>
+            </html>
+        "
+`;

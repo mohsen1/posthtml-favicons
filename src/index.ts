@@ -29,38 +29,44 @@ function plugin(options: Options = {}) {
 
     return function postHtmlFavicons(tree: Tree) {
         return new Promise((resolve, reject) => {
-            let ret = tree.match({ tag: "link", attrs: { rel: /icon/ } }, node => {
+            let filePath: undefined | string;
+
+            tree.match({ tag: "link", attrs: { rel: /icon/ } }, node => {
                 if (node.attrs.href === undefined) {
                     return node;
                 }
 
-                const filePath = path.resolve(root, node.attrs.href);
-
-                favicons(filePath, configuration, (err, res) => {
-                    if (err) {
-                        reject(err);
-                    } else {
-                        // Write images to disk
-                        for (const { name, contents } of [...res.images, ...res.files]) {
-                            fs.writeFileSync(path.resolve(outDir, name), contents);
-                        }
-
-                        // Add tags to head tag
-                        tree.match({ tag: "head" }, head => {
-                            return {
-                                ...head,
-                                content: [...head.content, ...res.html]
-                            };
-                        });
-
-                        resolve(tree);
-                    }
-                });
+                filePath = path.resolve(root, node.attrs.href);
 
                 // Remove original link tag
                 return false;
             });
-            console.log(ret);
+
+            if (filePath === undefined) {
+                console.info("[posthtml-favicon] No favicon link tag was found.");
+                return resolve();
+            }
+
+            favicons(filePath, configuration, (err, res) => {
+                if (err) {
+                    reject(err);
+                } else {
+                    // Write images to disk
+                    for (const { name, contents } of [...res.images, ...res.files]) {
+                        fs.writeFileSync(path.resolve(outDir, name), contents);
+                    }
+
+                    // Add tags to head tag
+                    tree.match({ tag: "head" }, head => {
+                        return {
+                            ...head,
+                            content: [...head.content, ...res.html]
+                        };
+                    });
+
+                    resolve(tree);
+                }
+            });
         });
     };
 }
