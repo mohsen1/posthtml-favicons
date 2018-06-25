@@ -16,6 +16,34 @@ jest.mock("favicons", () => (input: string, config: any, cb: Function) => {
 });
 
 describe("basics", () => {
+    it("does nothing if a link tag does not exist", async () => {
+        const html = `
+            <!doctype html>
+            <html>
+                <head>
+                </head>
+                <body>
+                </body>
+            </html>
+        `;
+        const config: Partial<Configuration> = {
+            icons: {
+                android: false,
+                appleIcon: false,
+                appleStartup: false,
+                coast: false,
+                favicons: true,
+                firefox: false,
+                yandex: false,
+                windows: false
+            }
+        };
+        const result = await posthtml()
+            .use(plugin({ configuration: config }))
+            .process(html);
+        expect(result.html).toMatchSnapshot();
+    });
+
     it("appends basic tags", async function() {
         const iconPath = "./__tests__/icon.png";
         const html = `
