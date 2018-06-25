@@ -2,7 +2,7 @@ import { Tree } from "posthtml-parser";
 import fs from "fs";
 import path from "path";
 import utils from "util";
-import favIcons, { Configuration, FavIconResponse } from "favicons";
+import favIcons, { Configuration } from "favicons";
 
 const writeFile = utils.promisify(fs.writeFile);
 
