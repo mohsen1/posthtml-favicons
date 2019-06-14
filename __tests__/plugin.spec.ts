@@ -22,17 +22,10 @@ jest.mock("favicons", () => (input: string, config: any, cb: Function) => {
 });
 
 describe("basics", () => {
-    it("does nothing if a link tag does not exist", async () => {
-        const html = `
-            <!doctype html>
-            <html>
-                <head>
-                </head>
-                <body>
-                </body>
-            </html>
-        `;
-        const config: Partial<Configuration> = {
+    let config: Partial<Configuration>;
+
+    beforeEach(() => {
+        config = {
             icons: {
                 android: false,
                 appleIcon: false,
@@ -44,6 +37,19 @@ describe("basics", () => {
                 windows: false
             }
         };
+    });
+
+    it("does nothing if a link tag does not exist", async () => {
+        const html = `
+            <!doctype html>
+            <html>
+                <head>
+                </head>
+                <body>
+                </body>
+            </html>
+        `;
+
         const result = await posthtml()
             .use(plugin({ configuration: config }))
             .process(html);
@@ -62,22 +68,30 @@ describe("basics", () => {
                 </body>
             </html>
         `;
-        const config: Partial<Configuration> = {
-            icons: {
-                android: false,
-                appleIcon: false,
-                appleStartup: false,
-                coast: false,
-                favicons: true,
-                firefox: false,
-                yandex: false,
-                windows: false
-            }
-        };
 
         const result = await posthtml()
             .use(plugin({ configuration: config }))
             .process(html);
         expect(result.html).toMatchSnapshot();
+    });
+
+    it("appends 1 basic tags", async function() {
+        const iconPath = "./__tests__/icon.png";
+        const html = `
+            <!doctype html>
+            <html>
+                <head>
+                    <link rel="icon" href="${iconPath}" />
+                </head>
+                <body>
+                </body>
+            </html>
+        `;
+
+        await posthtml()
+            .use(plugin({ outDir: "./dist/assets", configuration: config }))
+            .process(html)
+            .then((res: any) => { console.log(res.html)});
+        // expect(result.html).toMatchSnapshot();
     });
 });
