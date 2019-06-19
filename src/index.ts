@@ -49,6 +49,10 @@ function plugin(options: Options = {}) {
                 return resolve();
             }
 
+            if (!fs.existsSync(outDir)) {
+                fs.mkdirSync(outDir, { recursive: true });
+            }
+
             favIcons(filePath, configuration, async (err, res) => {
                 if (err) {
                     reject(err);
