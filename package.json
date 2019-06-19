@@ -24,8 +24,10 @@
         "typescript": "^3.5.2"
     },
     "dependencies": {
+        "@types/mkdirp": "^0.5.2",
         "@types/rimraf": "^2.0.2",
         "favicons": "^5.1.1",
+        "mkdirp": "^0.5.1",
         "posthtml-parser": "^0.4.1",
         "tslib": "^1.9.1"
     },

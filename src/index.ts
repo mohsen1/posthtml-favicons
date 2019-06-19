@@ -2,6 +2,7 @@ import { Tree } from "posthtml-parser";
 import fs from "fs";
 import path from "path";
 import utils from "util";
+import mkdirp from "mkdirp";
 import favIcons, { Configuration } from "favicons";
 
 const writeFile = utils.promisify(fs.writeFile);
@@ -50,7 +51,7 @@ function plugin(options: Options = {}) {
             }
 
             if (!fs.existsSync(outDir)) {
-                fs.mkdirSync(outDir, { recursive: true });
+                mkdirp.sync(outDir);
             }
 
             favIcons(filePath, configuration, async (err, res) => {
