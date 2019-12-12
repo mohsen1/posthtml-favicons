@@ -33,7 +33,7 @@ describe("Writing tests", () => {
     it("should create a nested output dir with an icon ", async () => {
         // We expect that the plugin will create three files in the output directory.
         // After, we'll list the files in the directory and compare it with the list of our expected files.
-        const expectedFilesList = ["favicon.ico", "favicon-16x16.png", "favicon-32x32.png"];
+        const expectedFilesList = ["favicon.ico", "favicon-16x16.png", "favicon-32x32.png", "favicon-48x48.png"];
 
         const html = `
             <!doctype html>
