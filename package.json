@@ -28,7 +28,7 @@
     "dependencies": {
         "@types/mkdirp": "^0.5.2",
         "@types/rimraf": "^2.0.3",
-        "favicons": "^5.5.0",
+        "favicons": "^6.2.0",
         "mkdirp": "^0.5.1",
         "posthtml-parser": "^0.4.2",
         "tslib": "^1.10.0"
