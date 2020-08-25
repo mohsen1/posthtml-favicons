@@ -12,7 +12,6 @@
         "preintegration": "yarn build",
         "integration": "ts-node integration.ts",
         "prepublish": "yarn build",
-        "prepack": "tsc --project tsconfig.prepack.json",
         "build": "tsc --pretty",
         "prebuild": "rm -rf dist"
     },
