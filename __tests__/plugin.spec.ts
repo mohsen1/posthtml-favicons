@@ -7,7 +7,7 @@ jest.mock("favicons", () => (input: string, config: any, cb: Function) => {
     const res: FavIconResponse = {
         images: [{ name: "foo", contents: Buffer.alloc(10) }],
         files: [{ name: "bar", contents: Buffer.alloc(10) }],
-        html: ['<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">']
+        html: ['<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">'],
     };
     cb(null, res);
 });
@@ -27,8 +27,8 @@ describe("basics", () => {
             favicons: true,
             firefox: false,
             yandex: false,
-            windows: false
-        }
+            windows: false,
+        },
     };
 
     it("does nothing if a link tag does not exist", async () => {
@@ -49,7 +49,7 @@ describe("basics", () => {
         expect(result.html).toMatchSnapshot();
     });
 
-    it("appends basic tags", async function() {
+    it("appends basic tags", async function () {
         const iconPath = "./__tests__/icon.png";
         const html = `
             <!doctype html>

@@ -13,8 +13,7 @@ Use a simple `<link>` tag to include your favicon. This plugin will add other re
     <head>
         <link rel="icon" href="path/to/icon.png" />
     </head>
-    <body>
-    </body>
+    <body></body>
 </html>
 ```
 
@@ -29,7 +28,7 @@ https://github.com/evilebottnawi/favicons#nodejs
 ### Example
 
 ```js
-const favIconPlugin = require('posthtml-favicons');
+const favIconPlugin = require("posthtml-favicons");
 const html = `
 <!doctype html>
 <html>
@@ -43,13 +42,14 @@ const html = `
 posthtml()
     .use(favIconPlugin({ outDir: "./dist", configuration: { path: "/icons" } }))
     .process(html)
-    .then(res => {
+    .then((res) => {
         // files are written to dist folder
         // res.html has new tags
     });
 ```
 
 ### Using with Parcel Bundler
+
 There is an example repo for demonstrating usage with Parcel Bundler
 
 [posthtml-favicon-parcel-example](https://github.com/mohsen1/posthtml-favicon-parcel-example)
