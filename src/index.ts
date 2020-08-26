@@ -34,7 +34,7 @@ function plugin(options: Options = {}) {
         return new Promise((resolve, reject) => {
             let filePath: undefined | string;
 
-            tree.match({ tag: "link", attrs: { rel: /icon/ } }, node => {
+            tree.match({ tag: "link", attrs: { rel: /icon/ } }, (node) => {
                 if (node.attrs.href === undefined) {
                     return node;
                 }
@@ -72,10 +72,10 @@ function plugin(options: Options = {}) {
                     }
 
                     // Add tags to head tag
-                    tree.match({ tag: "head" }, head => {
+                    tree.match({ tag: "head" }, (head) => {
                         return {
                             ...head,
-                            content: [...head.content, ...res.html]
+                            content: [...head.content, ...res.html],
                         };
                     });
 

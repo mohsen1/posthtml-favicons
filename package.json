@@ -2,8 +2,8 @@
     "name": "posthtml-favicons",
     "version": "1.3.1",
     "description": "PostHTML Favicon generator ",
-    "main": "dist/src/index.js",
-    "types": "dist/src/index.d.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "repository": "git@github.com:mohsen1/posthtml-favicons.git",
     "author": "Mohsen Azimi <me@azimi.me>",
     "license": "MIT",
@@ -12,26 +12,27 @@
         "preintegration": "yarn build",
         "integration": "ts-node integration.ts",
         "prepublish": "yarn build",
-        "prepack": "tsc --project tsconfig.prepack.json",
         "build": "tsc --pretty",
-        "prebuild": "rm -rf dist"
+        "prebuild": "rm -rf dist",
+        "format": "prettier --write '**/*.{json,md,ts,tsx,yml}'"
     },
     "devDependencies": {
-        "@types/jest": "^24.0.23",
-        "@types/node": "^12.12.17",
-        "jest": "^24.9.0",
-        "posthtml": "^0.12.0",
-        "ts-jest": "^24.2.0",
-        "ts-node": "^8.5.4",
-        "typescript": "^3.7.3"
+        "@types/jest": "^26.0.10",
+        "@types/mkdirp": "^1.0.1",
+        "@types/node": "^14.6.0",
+        "@types/rimraf": "^3.0.0",
+        "jest": "^26.4.2",
+        "posthtml": "^0.13.3",
+        "prettier": "^2.1.0",
+        "ts-jest": "^26.2.0",
+        "ts-node": "^9.0.0",
+        "typescript": "^3.9.7"
     },
     "dependencies": {
-        "@types/mkdirp": "^0.5.2",
-        "@types/rimraf": "^2.0.3",
-        "favicons": "^5.5.0",
-        "mkdirp": "^0.5.1",
-        "posthtml-parser": "^0.4.2",
-        "tslib": "^1.10.0"
+        "favicons": "^6.2.0",
+        "mkdirp": "^1.0.4",
+        "posthtml-parser": "^0.5.0",
+        "tslib": "^2.0.1"
     },
     "jest": {
         "transform": {

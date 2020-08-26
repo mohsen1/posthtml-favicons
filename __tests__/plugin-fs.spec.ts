@@ -20,8 +20,8 @@ describe("Writing tests", () => {
             favicons: true,
             firefox: false,
             yandex: false,
-            windows: false
-        }
+            windows: false,
+        },
     };
 
     let iconPath: string = "./__tests__/icon.png";

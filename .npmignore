@@ -1,7 +1,12 @@
 node_modules/
 .git/
 *.log
+.env*
+.prettierrc
 src/
 __tests__
 dist/__tests__
 dist/integration.js
+integration.ts
+tsconfig.json
+.travis.yml
