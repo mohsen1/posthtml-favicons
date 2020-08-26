@@ -1,6 +1,6 @@
 {
     "name": "posthtml-favicons",
-    "version": "1.3.1",
+    "version": "1.4.0",
     "description": "PostHTML Favicon generator ",
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
