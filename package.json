@@ -29,7 +29,7 @@
         "typescript": "^3.9.7"
     },
     "dependencies": {
-        "favicons": "^6.2.0",
+        "favicons": "^6.2.2",
         "mkdirp": "^1.0.4",
         "posthtml-parser": "^0.5.0",
         "tslib": "^2.0.1"
