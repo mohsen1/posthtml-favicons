@@ -32,7 +32,7 @@
         "favicons": "^6.2.0",
         "mkdirp": "^1.0.4",
         "posthtml-parser": "^0.5.0",
-        "tslib": "^2.0.1"
+        "tslib": "^2.8.1"
     },
     "jest": {
         "transform": {
